@@ -109,31 +109,31 @@ div#start {
 }
 
 #pik {
-    background-image: url('../images/Pik.png');
+    background-image: url('../../images/Pik.png');
     background-size: cover;
 }
 
 #karo {
-    background-image: url('../images/Karo.png');
+    background-image: url('../../images/Karo.png');
     background-size: cover;
 }
 
 #herc {
-    background-image: url('../images/Herc.png');
+    background-image: url('../../images/Herc.png');
     background-size: cover;
 }
 
 #skocko {
-    background-image: url('../images/Skocko.png');
+    background-image: url('../../images/Skocko.png');
     background-size: cover;
 }
 
 #zvezda {
-    background-image: url('../images/Zvezda.png');
+    background-image: url('../../images/Zvezda.png');
     background-size: cover;
 }
 
 #tref {
-    background-image: url('../images/Tref.png');
+    background-image: url('../../images/Tref.png');
     background-size: cover;
 }
