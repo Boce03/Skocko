@@ -8,3 +8,5 @@ symbols.set('skocko', 2);
 symbols.set('tref', 3);
 symbols.set('srce', 4);
 symbols.set('zvezda', 5);
+
+console.log("uspesno ucitano");
