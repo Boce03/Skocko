@@ -1,0 +1,54 @@
+body {
+    padding: 0;
+    margin: 0;
+    height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-container {
+    width: 800px;
+    height: 800px;
+    background-color: rgb(8, 93, 230);
+    border: 1px solid black;
+
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    padding: .5rem;
+}
+
+.field {
+    background-color: cornflowerblue;
+}
+
+.row {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0.5rem;
+}
+
+div#answer {
+    grid-row: 8/9;
+}
+
+div#start {
+    grid-row: 9/10;
+}
+
+.start-btn {
+    grid-column: 1/5;
+}
+
+.left-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(9, 1fr);
+    gap: .5rem;
+    
+}
+
+.right-container {
+
+}
