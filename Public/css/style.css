@@ -2,6 +2,7 @@
     --space: .3rem;
     --size: 78px;
     --btn-color: ghostwhite;
+    --btn-border-color: navy;
 }
 
 body {
@@ -98,7 +99,7 @@ div#start {
 
 .btn {
     background-color: var(--btn-color);
-    border: 1px solid var(--btn-color);
+    border: 1px solid var(--btn-border-color);
     text-transform: uppercase;
 }
 
