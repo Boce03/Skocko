@@ -12,9 +12,6 @@ symbols.set('herc', 4);
 symbols.set('zvezda', 5);
 
 
-/*
-    !need to be closure functions
-*/
 
 const add = function(e){
     let key = e.target.id;
@@ -44,7 +41,15 @@ const remove = function(e){
     console.log(gameState);
 }
 
+/* just testing add and remove on more rows */
+const submit = function(e){
+    /*need to add check and result of check*/
+    gameState.nextRow();
+    console.log(gameState);
+}
+
 export default {
     add,
-    remove
+    remove,
+    submit
 };
