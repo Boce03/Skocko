@@ -1,5 +1,7 @@
 import gameState from './gamestate';
+import logic from './logic';
 
+/* made separate module for images and symbols */
 const images = ['../images/Pik.png', '../images/Karo.png', '../images/Skocko.png', 
     '../images/Tref.png', '../images/Herc.png', '../images/Zvezda.png'];
 
@@ -43,7 +45,7 @@ const remove = function(e){
 
 /* just testing add and remove on more rows */
 const submit = function(e){
-    /*need to add check and result of check*/
+    logic.check();
     gameState.nextRow();
     console.log(gameState);
 }
