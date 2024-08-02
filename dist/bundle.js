@@ -26,7 +26,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
   \**************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _logic__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./logic */ \"./src/logic.js\");\n\n\nconst numOfFld = 4;\nconst numOfSym = 6;\nlet komb = [];\nlet filled = [];\nlet row;\n\nconst resetState = function(){\n    komb = [];\n    filled = new Array(numOfFld).fill(false);\n    row = 0;\n    _logic__WEBPACK_IMPORTED_MODULE_0__[\"default\"].generate();\n}\n\nconst nextRow = function(){\n    row++;\n    filled.fill(false);\n}\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({\n                numOfFld,\n                numOfSym,\n                get filled() {return filled;},\n                get komb() {return komb},\n                get row() {return row},\n                resetState, \n                nextRow\n            });\n\n\n\n//# sourceURL=webpack://skocko/./src/gamestate.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _logic__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./logic */ \"./src/logic.js\");\n/* harmony import */ var _timer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./timer */ \"./src/timer.js\");\n\n\n\nconst numOfFld = 4;\nconst numOfSym = 6;\nconst gameDuration = 60; //in seconds\nlet komb = [];\nlet filled = [];\nlet row;\n\nconst resetState = function(){\n    komb = [];\n    filled = new Array(numOfFld).fill(false);\n    row = 0;\n    _logic__WEBPACK_IMPORTED_MODULE_0__[\"default\"].generate();\n\n    let timerDiv = document.querySelector('.timer-inner');\n    timerDiv.style.height = '0';\n\n    _timer__WEBPACK_IMPORTED_MODULE_1__[\"default\"].init(gameDuration, timerDiv);\n    _timer__WEBPACK_IMPORTED_MODULE_1__[\"default\"].start();\n}\n\nconst nextRow = function(){\n    row++;\n    filled.fill(false);\n}\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({\n                numOfFld,\n                numOfSym,\n                gameDuration,\n                get filled() {return filled;},\n                get komb() {return komb},\n                get row() {return row},\n                resetState, \n                nextRow\n            });\n\n\n\n//# sourceURL=webpack://skocko/./src/gamestate.js?");
 
 /***/ }),
 
@@ -57,6 +57,16 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nconst images = ['../images/Pik.png', '../images/Karo.png', '../images/Skocko.png', \n    '../images/Tref.png', '../images/Herc.png', '../images/Zvezda.png'];\n\nconst symbols = new Map();\nsymbols.set('pik', 0);\nsymbols.set('karo', 1);\nsymbols.set('skocko', 2);\nsymbols.set('tref', 3);\nsymbols.set('herc', 4);\nsymbols.set('zvezda', 5);\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({\n    images,\n    symbols\n});\n\n//# sourceURL=webpack://skocko/./src/symbol.js?");
+
+/***/ }),
+
+/***/ "./src/timer.js":
+/*!**********************!*\
+  !*** ./src/timer.js ***!
+  \**********************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nlet timerWidthNumerator;\nlet timerWidthDenumerator;\n\nlet timer;\nlet timerDiv;\n\nfunction update(){\n    if(timerWidthNumerator <= timerWidthDenumerator){\n        timerWidthNumerator += 10;\n        const tmpTimerWidth = timerWidthNumerator / timerWidthDenumerator;\n        timerDiv.style.height = (tmpTimerWidth*100) + \"%\";\n    } else{\n        stop();\n        //gameOver function\n    }\n}\n\nconst init = function(gameDuration, div){\n    timerDiv = div;\n    timerWidthNumerator = 0;\n    timerWidthDenumerator = gameDuration * 1000;\n}\n\nconst start = function(){\n    timer = setInterval(update, 10);\n}\n\nconst stop = function(){\n    clearInterval(timer);\n}\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({\n    init,\n    start,\n    stop\n});\n\n//# sourceURL=webpack://skocko/./src/timer.js?");
 
 /***/ })
 
