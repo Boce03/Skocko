@@ -20,6 +20,16 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 
 /***/ }),
 
+/***/ "./src/event.js":
+/*!**********************!*\
+  !*** ./src/event.js ***!
+  \**********************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nconst addEvent = function(getElements, foo, event){\n    let elements = getElements();\n    for(let elem of elements){\n        elem.addEventListener(event, foo);\n    }\n}\n\nconst removeEvent = function(getElements, foo,event){\n    let elements = getElements();\n    for(let elem of elements){\n        elem.removeEventListener(event, foo);\n    }\n}\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({\n    addEvent,\n    removeEvent\n});\n\n//# sourceURL=webpack://skocko/./src/event.js?");
+
+/***/ }),
+
 /***/ "./src/gamestate.js":
 /*!**************************!*\
   !*** ./src/gamestate.js ***!
@@ -36,7 +46,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
   \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _gamestate__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./gamestate */ \"./src/gamestate.js\");\n/* harmony import */ var _actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./actions */ \"./src/actions.js\");\n\n\n\nconsole.log(\"uspesno ucitano\");\n\nconst addEvent = function(getElements, foo, event){\n    let btnSymbols = getElements();\n    for(let btn of btnSymbols){\n        btn.addEventListener(event, foo);\n    }\n}\n\n_gamestate__WEBPACK_IMPORTED_MODULE_0__[\"default\"].resetState();\nconsole.log(_gamestate__WEBPACK_IMPORTED_MODULE_0__[\"default\"]);\n\naddEvent(function(){\n    return document.querySelectorAll('div.right-bottom-container .btn');\n}, _actions__WEBPACK_IMPORTED_MODULE_1__[\"default\"].add, 'click');\n\naddEvent(function(){\n    return document.querySelectorAll('div.left-container div.fld-hover');\n}, _actions__WEBPACK_IMPORTED_MODULE_1__[\"default\"].remove, 'click');\n\naddEvent(function(){\n    return document.querySelectorAll('div.left-row .btn');\n}, _actions__WEBPACK_IMPORTED_MODULE_1__[\"default\"].submit, 'click');\n\n//# sourceURL=webpack://skocko/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _gamestate__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./gamestate */ \"./src/gamestate.js\");\n/* harmony import */ var _actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./actions */ \"./src/actions.js\");\n/* harmony import */ var _event__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./event */ \"./src/event.js\");\n\n\n\n\nconsole.log(\"uspesno ucitano\");\n\n_gamestate__WEBPACK_IMPORTED_MODULE_0__[\"default\"].resetState();\nconsole.log(_gamestate__WEBPACK_IMPORTED_MODULE_0__[\"default\"]);\n\n_event__WEBPACK_IMPORTED_MODULE_2__[\"default\"].addEvent(function(){\n    return document.querySelectorAll('div.right-bottom-container .btn');\n}, _actions__WEBPACK_IMPORTED_MODULE_1__[\"default\"].add, 'click');\n\n_event__WEBPACK_IMPORTED_MODULE_2__[\"default\"].addEvent(function(){\n    return document.querySelectorAll('div.left-container div.fld-hover');\n}, _actions__WEBPACK_IMPORTED_MODULE_1__[\"default\"].remove, 'click');\n\n_event__WEBPACK_IMPORTED_MODULE_2__[\"default\"].addEvent(function(){\n    return document.querySelectorAll('div.left-row .btn');\n}, _actions__WEBPACK_IMPORTED_MODULE_1__[\"default\"].submit, 'click');\n\n//# sourceURL=webpack://skocko/./src/index.js?");
 
 /***/ }),
 
