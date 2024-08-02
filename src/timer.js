@@ -4,6 +4,7 @@ let timerWidthDenumerator;
 let timer;
 let timerDiv;
 
+//add colors based on time left
 function update(){
     if(timerWidthNumerator <= timerWidthDenumerator){
         timerWidthNumerator += 10;
