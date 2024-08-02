@@ -32,7 +32,10 @@ const remove = function(e){
 
 /* just testing add and remove on more rows */
 const submit = function(e){
-    logic.check();
+    if(logic.check()){
+        logic.showAnswer();
+    }
+    
     gameState.nextRow();
     console.log(gameState);
 }

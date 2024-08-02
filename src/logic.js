@@ -1,4 +1,5 @@
 import gameState from './gamestate';
+import symbol from './symbol';
 
 let target = [
     {
@@ -71,7 +72,16 @@ const check = function(){
     return isWin;
 };
 
+const showAnswer = function(){
+    for(let i = 0; i < target.length; i++){
+        let fld = document.getElementById(`answer-${i}`);
+        fld.style.backgroundImage = `url(${symbol.images[target[i].symbol]})`;
+        fld.style.backgroundSize = 'cover';
+    }
+}
+
 export default {
     generate,
-    check
+    check,
+    showAnswer
 };
