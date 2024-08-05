@@ -30,13 +30,16 @@ const remove = function(e){
     console.log(gameState);
 }
 
-/* just testing add and remove on more rows */
 const submit = function(e){
     if(logic.check()){
-        logic.showAnswer();
+        gameState.gameOver();
+    } else{
+        gameState.nextRow();
+        if(gameState.row === gameState.numOfSym){
+            gameState.gameOver();
+        }
     }
-    
-    gameState.nextRow();
+
     console.log(gameState);
 }
 

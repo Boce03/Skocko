@@ -10,9 +10,25 @@ let komb = [];
 let filled = [];
 let row;
 
-let btnStartGame = document.getElementById('start');
+const resetFields = function(){
+    let fields = document.querySelectorAll(`div.fld-hover`);
+    for(let fld of fields){
+        fld.style.backgroundImage = 'none';
+    }
+
+    fields = document.querySelectorAll(`div.right-row .field`);
+    for(let fld of fields){
+        fld.style.backgroundColor = 'cornflowerblue';
+    }
+
+    fields = document.querySelectorAll(`div#answer .field`);
+    for(let fld of fields){
+        fld.style.backgroundImage = 'none';
+    }
+};
 
 const resetState = function(){
+    resetFields();
     komb = [];
     filled = new Array(numOfFld).fill(false);
     row = 0;
@@ -20,7 +36,7 @@ const resetState = function(){
     
     
     let timerDiv = document.querySelector('.timer-inner');
-    timerDiv.style.height = '0';
+    timerDiv.style.height = '0px';
     timer.init(gameDuration, timerDiv);
     timer.start();
 
@@ -63,14 +79,38 @@ const nextRow = function(){
     }, action.submit, 'click');
 }
 
+const gameOver = function(){
+    logic.showAnswer();
+    timer.stop();
+
+    if(row < numOfSym){
+        event.removeEvent(function(){
+            return document.querySelectorAll(`div#fld-${row} div.fld-hover`);
+        }, action.remove, 'click');
+    
+        event.removeEvent(function(){
+            return document.querySelectorAll(`div#fld-${row} .btn`);
+        }, action.submit, 'click');
+    }
+
+    event.removeEvent(function(){
+        return document.querySelectorAll('div.right-bottom-container .btn');
+    }, action.add, 'click');
+
+    event.addEvent(function(){
+        return document.querySelectorAll('#start');
+    }, resetState, 'click');
+}
+
 export default {
                 numOfFld,
                 numOfSym,
                 gameDuration,
                 get filled() {return filled;},
-                get komb() {return komb},
-                get row() {return row},
+                get komb() {return komb;},
+                get row() {return row;},
                 resetState, 
-                nextRow
+                nextRow,
+                gameOver
             };
 

@@ -1,7 +1,9 @@
+import gameState from './gamestate';
+
 let timerWidthNumerator;
 let timerWidthDenumerator;
 
-let timer;
+let timer = null;
 let timerDiv;
 
 //add colors based on time left
@@ -11,8 +13,7 @@ function update(){
         const tmpTimerWidth = timerWidthNumerator / timerWidthDenumerator;
         timerDiv.style.height = (tmpTimerWidth*100) + "%";
     } else{
-        stop();
-        //gameOver function
+        gameState.gameOver();
     }
 }
 
@@ -27,7 +28,10 @@ const start = function(){
 }
 
 const stop = function(){
-    clearInterval(timer);
+    if(timer !== null){
+        clearInterval(timer);
+        timer = null;
+    }
 }
 
 export default {
