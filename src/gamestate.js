@@ -5,7 +5,7 @@ import action from './actions';
 
 const numOfFld = 4;
 const numOfSym = 6;
-const gameDuration = 60; //in seconds
+const gameDuration = 10; //in seconds
 let komb = [];
 let filled = [];
 let row;
@@ -28,20 +28,17 @@ const resetFields = function(){
 };
 
 const resetState = function(){
-    resetFields();
+    //resetFields();
     komb = [];
     filled = new Array(numOfFld).fill(false);
     row = 0;
     logic.generate();
     
-    
-    let timerDiv = document.querySelector('.timer-inner');
-    timerDiv.style.height = '0px';
-    timer.init(gameDuration, timerDiv);
-    timer.start();
+    timer.start(gameDuration * 1000);
+    let btnStart = document.querySelector('.btn-start');
+    btnStart.classList.add('none');
 
-    
-    event.addEvent(function(){
+    /*event.addEvent(function(){
         return document.querySelectorAll('div.right-bottom-container .btn');
     }, action.add, 'click');
 
@@ -55,7 +52,7 @@ const resetState = function(){
 
     event.removeEvent(function(){
         return document.querySelectorAll('#start');
-    }, resetState, 'click');
+    }, resetState, 'click');*/
 }
 
 const nextRow = function(){
@@ -80,8 +77,11 @@ const nextRow = function(){
 }
 
 const gameOver = function(){
-    logic.showAnswer();
     timer.stop();
+    let btnStart = document.querySelector('.btn-start');
+    btnStart.classList.remove('none');
+
+    /*logic.showAnswer();
 
     if(row < numOfSym){
         event.removeEvent(function(){
@@ -99,7 +99,7 @@ const gameOver = function(){
 
     event.addEvent(function(){
         return document.querySelectorAll('#start');
-    }, resetState, 'click');
+    }, resetState, 'click');*/
 }
 
 export default {

@@ -1,41 +1,60 @@
 import gameState from './gamestate';
 
-let timerWidthNumerator;
-let timerWidthDenumerator;
-
 let timer = null;
-let timerDiv;
+let remainingTime;
+let fullTime;
+let animated;
 
-//add colors based on time left
-function update(){
-    if(timerWidthNumerator <= timerWidthDenumerator){
-        timerWidthNumerator += 10;
-        const tmpTimerWidth = timerWidthNumerator / timerWidthDenumerator;
-        timerDiv.style.height = (tmpTimerWidth*100) + "%";
-    } else{
+let progressCircle = document.querySelector('.semi-circle[data-type="progress"]');
+let blockingCircle = document.querySelector('.semi-circle[data-type="blocking"]');
+let helperCircle = document.querySelector('.helper');
+let spanTime = document.querySelector('.timer');
+let timerCircle = document.querySelector('.timer-circle');
+
+function update() {
+    remainingTime -= 10;
+    let angle = (remainingTime / fullTime) * 360;
+    progressCircle.style.transform = `rotate(${angle}deg)`;
+
+    if(angle <= 180){
+        blockingCircle.style.display = 'block';
+        helperCircle.style.display = 'none';
+    }
+
+    if(angle <= 0){
         gameState.gameOver();
     }
+
+    let seconds = Number.parseInt(remainingTime / 1000);
+    if(seconds < 6 && !animated){
+        timerCircle.classList.add('animated');
+        animated = true;
+    }
+    
+    spanTime.textContent = `${seconds}`;
 }
 
-const init = function(gameDuration, div){
-    timerDiv = div;
-    timerWidthNumerator = 0;
-    timerWidthDenumerator = gameDuration * 1000;
-}
-
-const start = function(){
+const start = function(gameDuration){
+    console.log('timer started')
+    fullTime = gameDuration;
+    remainingTime = gameDuration;
+    animated = false;
+    progressCircle.style.display = 'block';
+    helperCircle.style.display = 'block';
     timer = setInterval(update, 10);
 }
 
 const stop = function(){
     if(timer !== null){
+        progressCircle.style.display = 'none';
+        blockingCircle.style.display = 'none';
+        timerCircle.classList.remove('animated');
         clearInterval(timer);
         timer = null;
     }
 }
 
 export default {
-    init,
     start,
     stop
 };
