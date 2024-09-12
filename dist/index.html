@@ -4,133 +4,159 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Skocko</title>
-    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" href="/dist/css/style.css">
 </head>
 <body>
     <div class="main-container">
-        <div class="left-container">
-            <div class="left-row" id="fld-0">
-                <div class="field fld-hover" id="0"></div>
-                <div class="field fld-hover" id="1"></div>
-                <div class="field fld-hover" id="2"></div>
-                <div class="field fld-hover" id="3"></div>
-                <button class="btn"></button>
-            </div>
-
-            <div class="left-row" id="fld-1">
-                <div class="field fld-hover" id="4"></div>
-                <div class="field fld-hover" id="5"></div>
-                <div class="field fld-hover" id="6"></div>
-                <div class="field fld-hover" id="7"></div>
-                <button class="btn"></button>
-            </div>
-
-            <div class="left-row" id="fld-2">
-                <div class="field fld-hover" id="8"></div>
-                <div class="field fld-hover" id="9"></div>
-                <div class="field fld-hover" id="10"></div>
-                <div class="field fld-hover" id="11"></div>
-                <button class="btn"></button>
-            </div>
-
-            <div class="left-row" id="fld-3">
-                <div class="field fld-hover" id="12"></div>
-                <div class="field fld-hover" id="13"></div>
-                <div class="field fld-hover" id="14"></div>
-                <div class="field fld-hover" id="15"></div>
-                <button class="btn"></button>
-            </div>
-
-            <div class="left-row" id="fld-4">
-                <div class="field fld-hover" id="16"></div>
-                <div class="field fld-hover" id="17"></div>
-                <div class="field fld-hover" id="18"></div>
-                <div class="field fld-hover" id="19"></div>
-                <button class="btn"></button>
-            </div>
-
-            <div class="left-row" id="fld-5">
-                <div class="field fld-hover" id="20"></div>
-                <div class="field fld-hover" id="21"></div>
-                <div class="field fld-hover" id="22"></div>
-                <div class="field fld-hover" id="23"></div>
-                <button class="btn"></button>
-            </div>
-
-            <div class="left-row" id="answer">
-                <div class="field" id="answer-0"></div>
-                <div class="field" id="answer-1"></div>
-                <div class="field" id="answer-2"></div>
-                <div class="field" id="answer-3"></div>
-            </div>
-
-            <div class="left-row" id="start">
-                <button class="btn" id="start-btn">Start game</button>
+        <div class="timer-container flex-center">
+            <div class="circle flex-center">
+                <div class="semi-circle" data-type="progress"></div>
+                <div class="semi-circle" data-type="blocking"></div>
+                <div class="helper"></div>
+                <div class="timer-circle flex-center">
+                    <span class="timer">0</span>
+                </div>
             </div>
         </div>
-
-        <div class="center-container">
-            <div class="timer">
-                <div class="timer-inner"></div>
+        <div class="game-container">
+            <div class="flex-row" data-type="grid">
+                <div class="flex-row transparent">
+                    <div class="flex-row fld-row">
+                        <div class="fld"></div>
+                        <div class="fld"></div>
+                        <div class="fld"></div>
+                        <div class="fld"></div>
+                    </div>
+                    <button class="btn rez-btn none">Potvrdi</button>
+                    <div class="flex-center rez-row">
+                        <div class="rez"></div>
+                        <div class="rez"></div>
+                        <div class="rez"></div>
+                        <div class="rez"></div>
+                    </div>
+                </div>
+                <button class="btn btn-symbol symbol" id="pik"></button>
             </div>
-        </div>
-
-        <div class="right-container">
-            <div class="right-above-container">
-                <div class="right-row" id="rez-0">
-                    <div class="field"></div>
-                    <div class="field"></div>
-                    <div class="field"></div>
-                    <div class="field"></div>
+            <div class="flex-row" data-type="grid">
+                <div class="flex-row transparent">
+                    <div class="flex-row fld-row">
+                        <div class="fld"></div>
+                        <div class="fld"></div>
+                        <div class="fld"></div>
+                        <div class="fld"></div>
+                    </div>
+                    <button class="btn rez-btn">Potvrdi</button>
+                    <div class="flex-center rez-row none">
+                        <div class="rez"></div>
+                        <div class="rez"></div>
+                        <div class="rez"></div>
+                        <div class="rez"></div>
+                    </div>
                 </div>
-
-                <div class="right-row" id="rez-1">
-                    <div class="field"></div>
-                    <div class="field"></div>
-                    <div class="field"></div>
-                    <div class="field"></div>
-                </div>
-
-                <div class="right-row" id="rez-2">
-                    <div class="field"></div>
-                    <div class="field"></div>
-                    <div class="field"></div>
-                    <div class="field"></div>
-                </div>
-
-                <div class="right-row" id="rez-3">
-                    <div class="field"></div>
-                    <div class="field"></div>
-                    <div class="field"></div>
-                    <div class="field"></div>
-                </div>
-
-                <div class="right-row" id="rez-4">
-                    <div class="field"></div>
-                    <div class="field"></div>
-                    <div class="field"></div>
-                    <div class="field"></div>
-                </div>
-
-                <div class="right-row" id="rez-5">
-                    <div class="field"></div>
-                    <div class="field"></div>
-                    <div class="field"></div>
-                    <div class="field"></div>
-                </div>
+                <button class="btn btn-symbol symbol" id="karo"></button>
             </div>
-
-            <div class="right-bottom-container">
-                <button class="btn" id="pik"></button>
-                <button class="btn" id="karo"></button>
-                <button class="btn" id="skocko"></button>
-                <button class="btn" id="tref"></button>
-                <button class="btn" id="herc"></button>
-                <button class="btn" id="zvezda"></button>
+            <div class="flex-row" data-type="grid">
+                <div class="flex-row transparent">
+                    <div class="flex-row fld-row">
+                        <div class="fld"></div>
+                        <div class="fld"></div>
+                        <div class="fld"></div>
+                        <div class="fld"></div>
+                    </div>
+                    <button class="btn rez-btn">Potvrdi</button>
+                    <div class="flex-center rez-row none">
+                        <div class="rez"></div>
+                        <div class="rez"></div>
+                        <div class="rez"></div>
+                        <div class="rez"></div>
+                    </div>
+                </div>
+                <button class="btn btn-symbol symbol" id="skocko"></button>
+            </div>
+            <div class="flex-row" data-type="grid">
+                <div class="flex-row transparent">
+                    <div class="flex-row fld-row">
+                        <div class="fld"></div>
+                        <div class="fld"></div>
+                        <div class="fld"></div>
+                        <div class="fld"></div>
+                    </div>
+                    <button class="btn rez-btn">Potvrdi</button>
+                    <div class="flex-center rez-row none">
+                        <div class="rez"></div>
+                        <div class="rez"></div>
+                        <div class="rez"></div>
+                        <div class="rez"></div>
+                    </div>
+                </div>
+                <button class="btn btn-symbol symbol" id="tref"></button>
+            </div>
+            <div class="flex-row" data-type="grid">
+                <div class="flex-row transparent">
+                    <div class="flex-row fld-row">
+                        <div class="fld"></div>
+                        <div class="fld"></div>
+                        <div class="fld"></div>
+                        <div class="fld"></div>
+                    </div>
+                    <button class="btn rez-btn">Potvrdi</button>
+                    <div class="flex-center rez-row none">
+                        <div class="rez"></div>
+                        <div class="rez"></div>
+                        <div class="rez"></div>
+                        <div class="rez"></div>
+                    </div>
+                </div>
+                <button class="btn btn-symbol symbol" id="herc"></button>
+            </div>
+            <div class="flex-row" data-type="grid">
+                <div class="flex-row transparent">
+                    <div class="flex-row fld-row">
+                        <div class="fld"></div>
+                        <div class="fld"></div>
+                        <div class="fld"></div>
+                        <div class="fld"></div>
+                    </div>
+                    <button class="btn rez-btn">Potvrdi</button>
+                    <div class="flex-center rez-row none">
+                        <div class="rez"></div>
+                        <div class="rez"></div>
+                        <div class="rez"></div>
+                        <div class="rez"></div>
+                    </div>
+                </div>
+                <button class="btn btn-symbol symbol" id="zvezda"></button>
+            </div>
+            <div class="flex-row" data-type="answer">
+                <div class="flex-row transparent">
+                    <div class="flex-row fld-row">
+                        <div class="fld"></div>
+                        <div class="fld"></div>
+                        <div class="fld"></div>
+                        <div class="fld"></div>
+                    </div>
+                    <div class="flex-center rez-row hidden">
+                        <div class="rez"></div>
+                        <div class="rez"></div>
+                        <div class="rez"></div>
+                        <div class="rez"></div>
+                    </div>
+                </div>
+                <button class="btn btn-symbol hidden"></button>
+            </div>
+            <div class="flex-row" data-type="grid">
+                <div class="flex-row transparent">
+                    <button class="btn btn-start">Start</button>
+                    <div class="flex-center rez-row hidden">
+                        <div class="rez"></div>
+                        <div class="rez"></div>
+                        <div class="rez"></div>
+                        <div class="rez"></div>
+                    </div>
+                </div>
+                <button class="btn btn-symbol hidden"></button>
             </div>
         </div>
     </div>
-
-    <script src="bundle.js"></script>
 </body>
 </html>
