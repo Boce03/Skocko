@@ -170,9 +170,6 @@
     min-height: 50px;
 }
 
-.flex-row[data-type="grid"] {
-    gap: 1rem;
-}
 
 .flex-row > .flex-row:first-of-type {
     background-color: var(--color-500);
@@ -180,8 +177,16 @@
     min-width: 100px;
 }
 
+.flex-row[data-type="grid"],
 .flex-row[data-type="answer"] {
     gap: 1rem;
+}
+
+@media (max-width: 768px) {
+    .flex-row[data-type="grid"],
+.flex-row[data-type="answer"] {
+    gap: 0.9rem;
+}
 }
 
 .rez-row {
@@ -231,7 +236,7 @@
 }
 
 .rez-btn {
-    width: 150px;
+    width: 151px;
     min-width: 92px;
     min-height: 50px;
     margin-left: .5rem;

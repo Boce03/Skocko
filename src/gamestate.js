@@ -46,6 +46,10 @@ const resetState = function(){
         return document.querySelectorAll(`.flex-row[data-type="row-${row}"] .fld-remove`);
     }, action.remove, 'click');
 
+    event.addEvent(function(){
+        return document.querySelectorAll(`.flex-row[data-type="row-${row}"] .rez-btn`);
+    }, action.submit, 'click')
+
     //dodaje dogadjaj za simbol
     /*event.addEvent(function(){
         return document.querySelectorAll('div.right-bottom-container .btn');
@@ -71,27 +75,28 @@ const resetState = function(){
 
 const nextRow = function(){
     event.removeEvent(function(){
-        return document.querySelectorAll(`div#fld-${row} div.fld-hover`);
+        return document.querySelectorAll(`.flex-row[data-type="row-${row}"] .fld-remove`);
     }, action.remove, 'click');
 
     event.removeEvent(function(){
-        return document.querySelectorAll(`div#fld-${row} .btn`);
-    }, action.submit, 'click');
+        return document.querySelectorAll(`.flex-row[data-type="row-${row}"] .rez-btn`);
+    }, action.submit, 'click')
     
     row++;
     filled.fill(false);
 
     event.addEvent(function(){
-        return document.querySelectorAll(`div#fld-${row} div.fld-hover`);
+        return document.querySelectorAll(`.flex-row[data-type="row-${row}"] .fld-remove`);
     }, action.remove, 'click');
 
     event.addEvent(function(){
-        return document.querySelectorAll(`div#fld-${row} .btn`);
-    }, action.submit, 'click');
+        return document.querySelectorAll(`.flex-row[data-type="row-${row}"] .rez-btn`);
+    }, action.submit, 'click')
 }
 
 const gameOver = function(){
     timer.stop();
+    logic.showAnswer();
     let btnStart = document.querySelector('.btn-start');
     btnStart.classList.remove('hidden');
 

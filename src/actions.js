@@ -40,6 +40,8 @@ const remove = function(e){
 }
 
 const submit = function(e){
+    e.target.classList.add('none');
+
     if(logic.check()){
         gameState.gameOver();
     } else{

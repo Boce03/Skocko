@@ -58,8 +58,13 @@ const check = function(){
 
     let isWin = red === gameState.numOfFld;
     
-    let fields = document.getElementById(`rez-${gameState.row}`).children;
-    for(let fld of fields){
+    let currRow = document.querySelector(`.flex-row[data-type="row-${gameState.row}"]`);
+    currRow.classList.remove('transparent');
+
+    let rezRow = document.querySelector(`.flex-row[data-type="row-${gameState.row}"] .rez-row`);
+    rezRow.classList.remove('none');
+
+    for(let fld of rezRow.children){
         if(red > 0){
             fld.style.backgroundColor = 'red';
             red--;
@@ -76,7 +81,6 @@ const showAnswer = function(){
     for(let i = 0; i < target.length; i++){
         let fld = document.getElementById(`answer-${i}`);
         fld.style.backgroundImage = `url(${symbol.images[target[i].symbol]})`;
-        fld.style.backgroundSize = 'cover';
     }
 }
 
