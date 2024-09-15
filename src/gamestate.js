@@ -5,7 +5,7 @@ import action from './actions';
 
 const numOfFld = 4;
 const numOfSym = 6;
-const gameDuration = 10; //in seconds
+const gameDuration = 60; //in seconds
 let komb = [];
 let filled = [];
 let row;
@@ -36,20 +36,34 @@ const resetState = function(){
     
     timer.start(gameDuration * 1000);
     let btnStart = document.querySelector('.btn-start');
-    btnStart.classList.add('none');
+    btnStart.classList.add('hidden');
 
+    event.addEvent(function(){
+        return document.querySelectorAll('.btn-symbol');
+    }, action.add, 'click');
+
+    event.addEvent(function(){
+        return document.querySelectorAll(`.flex-row[data-type="row-${row}"] .fld-remove`);
+    }, action.remove, 'click');
+
+    //dodaje dogadjaj za simbol
     /*event.addEvent(function(){
         return document.querySelectorAll('div.right-bottom-container .btn');
     }, action.add, 'click');
 
+    //dodaje uklanjane simbola
     event.addEvent(function(){
         return document.querySelectorAll('div#fld-0 div.fld-hover');
     }, action.remove, 'click');
 
+    
+    //potvrdi dogadjaj
     event.addEvent(function(){
         return document.querySelectorAll('div#fld-0 .btn');
     }, action.submit, 'click');
 
+    //treba da uklonimo start, jer je visibility turn off
+    !moze da se resi sa disabled property
     event.removeEvent(function(){
         return document.querySelectorAll('#start');
     }, resetState, 'click');*/
@@ -79,7 +93,7 @@ const nextRow = function(){
 const gameOver = function(){
     timer.stop();
     let btnStart = document.querySelector('.btn-start');
-    btnStart.classList.remove('none');
+    btnStart.classList.remove('hidden');
 
     /*logic.showAnswer();
 

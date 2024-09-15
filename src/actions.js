@@ -16,7 +16,11 @@ const add = function(e){
     let fldIndex = gameState.row*gameState.numOfFld + index;
     let fld = document.getElementById(`${fldIndex}`);
     fld.style.backgroundImage = `url(${symbol.images[symbol.symbols.get(key)]})`;
-    fld.style.backgroundSize = 'cover';
+
+    if(gameState.filled.findIndex((a) => a === false) === -1){
+        let rezBtn = document.querySelector(`.flex-row[data-type="row-${gameState.row}"] > .rez-btn`);
+        rezBtn.classList.remove('hidden');
+    }
     
     console.log(gameState);
 }
@@ -26,6 +30,11 @@ const remove = function(e){
     let index = Number.parseInt(fld.id) % gameState.numOfFld;
     gameState.filled[index] = false;
     fld.style.backgroundImage = 'none';
+
+    if(gameState.filled.findIndex((a) => a === false) !== -1){
+        let rezBtn = document.querySelector(`.flex-row[data-type="row-${gameState.row}"] > .rez-btn`);
+        rezBtn.classList.add('hidden');
+    }
 
     console.log(gameState);
 }
