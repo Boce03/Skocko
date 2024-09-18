@@ -10,25 +10,41 @@ let komb = [];
 let filled = [];
 let row;
 
-const resetFields = function(){
-    let fields = document.querySelectorAll(`div.fld-hover`);
+const resetRow = function(){
+    let fields = document.querySelectorAll(`.fld-remove`);
     for(let fld of fields){
         fld.style.backgroundImage = 'none';
     }
 
-    fields = document.querySelectorAll(`div.right-row .field`);
-    for(let fld of fields){
-        fld.style.backgroundColor = 'cornflowerblue';
+    let fldRows = document.querySelectorAll('.flex-row[data-type="grid"] > .flex-row:first-of-type');
+    for(let row of fldRows){
+        row.classList.add('transparent');
     }
 
-    fields = document.querySelectorAll(`div#answer .field`);
-    for(let fld of fields){
+    let rezRows = document.querySelectorAll('.rez-row');
+    for(let row of rezRows){
+        row.style.visibility = 'hidden';
+    }
+
+    let rezBtn = document.querySelectorAll('.rez-btn');
+    for(let btn of rezBtn){
+        btn.style.visibility = 'hidden';
+    }
+
+    let ansFld = document.querySelectorAll('.flex-row[data-type="answer"] .fld');
+    for(let fld of ansFld){
         fld.style.backgroundImage = 'none';
+    }
+
+    let rezFld = document.querySelectorAll('.rez-row .rez');
+    for(let fld of rezFld){
+        fld.style.backgroundColor = 'white';
     }
 };
 
 const resetState = function(){
-    //resetFields();
+    resetRow();
+
     komb = [];
     filled = new Array(numOfFld).fill(false);
     row = 0;
@@ -49,28 +65,6 @@ const resetState = function(){
     event.addEvent(function(){
         return document.querySelectorAll(`.flex-row[data-type="row-${row}"] .rez-btn`);
     }, action.submit, 'click')
-
-    //dodaje dogadjaj za simbol
-    /*event.addEvent(function(){
-        return document.querySelectorAll('div.right-bottom-container .btn');
-    }, action.add, 'click');
-
-    //dodaje uklanjane simbola
-    event.addEvent(function(){
-        return document.querySelectorAll('div#fld-0 div.fld-hover');
-    }, action.remove, 'click');
-
-    
-    //potvrdi dogadjaj
-    event.addEvent(function(){
-        return document.querySelectorAll('div#fld-0 .btn');
-    }, action.submit, 'click');
-
-    //treba da uklonimo start, jer je visibility turn off
-    !moze da se resi sa disabled property
-    event.removeEvent(function(){
-        return document.querySelectorAll('#start');
-    }, resetState, 'click');*/
 }
 
 const nextRow = function(){
@@ -100,25 +94,17 @@ const gameOver = function(){
     let btnStart = document.querySelector('.btn-start');
     btnStart.classList.remove('hidden');
 
-    /*logic.showAnswer();
-
-    if(row < numOfSym){
+    while(row < numOfSym) {
         event.removeEvent(function(){
-            return document.querySelectorAll(`div#fld-${row} div.fld-hover`);
+            return document.querySelectorAll(`.flex-row[data-type="row-${row}"] .fld-remove`);
         }, action.remove, 'click');
     
         event.removeEvent(function(){
-            return document.querySelectorAll(`div#fld-${row} .btn`);
-        }, action.submit, 'click');
+            return document.querySelectorAll(`.flex-row[data-type="row-${row}"] .rez-btn`);
+        }, action.submit, 'click')
+
+        row++;
     }
-
-    event.removeEvent(function(){
-        return document.querySelectorAll('div.right-bottom-container .btn');
-    }, action.add, 'click');
-
-    event.addEvent(function(){
-        return document.querySelectorAll('#start');
-    }, resetState, 'click');*/
 }
 
 export default {

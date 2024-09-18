@@ -247,20 +247,6 @@
     right: 0;
 }
 
-/*!!!vazno, promeniti rez-btn da bude absolute unutar flex-row*/
-/*.rez-btn {
-    width: 151px;
-    min-width: 92px;
-    min-height: 50px;
-    margin-left: .5rem;
-}
-
-@media (max-width: 768px) {
-    .rez-btn {
-        width: 110px;
-    }
-}*/
-
 @media (max-width: 424px) {
     .rez-btn {
         font-size: 16px;
