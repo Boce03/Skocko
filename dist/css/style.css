@@ -193,8 +193,6 @@
 }
 
 .last-row {
-    margin-top: auto;
-
     display: flex;
     flex-flow: column;
     gap: .5rem;
