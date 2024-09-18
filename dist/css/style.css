@@ -146,6 +146,22 @@
     color: #414145;
 }
 
+@media (max-height: 700px) {
+    .circle {
+        width: 70px;
+        height: 70px;
+    }
+
+    .timer-circle {
+        width: 60px;
+        height: 60px;
+    }
+
+    .timer {
+        font-size: 32px;
+    }
+}
+
 .animated {
     animation: 1s 10 forwards changebg;
 }
