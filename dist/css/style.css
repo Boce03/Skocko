@@ -25,6 +25,10 @@
     visibility: hidden; 
 }
 
+.visible {
+    visibility: visible;
+}
+
 .none {
     display: none !important;
 }
@@ -190,6 +194,7 @@
 }
 
 .rez-row {
+    position: relative;
     padding-inline: 5px;
     align-content: space-evenly;
     border-top-right-radius: 5px;
@@ -197,7 +202,7 @@
     max-width: calc(4*var(--fld-width));
     background-color: var(--color-500);
     gap: 3px;
-    min-width: 100px;
+    min-width: 90px;
     min-height: 50px;
 }
 
@@ -236,6 +241,14 @@
 }
 
 .rez-btn {
+    position: absolute;
+    height: 100%;
+    width: 93%;
+    right: 0;
+}
+
+/*!!!vazno, promeniti rez-btn da bude absolute unutar flex-row*/
+/*.rez-btn {
     width: 151px;
     min-width: 92px;
     min-height: 50px;
@@ -246,7 +259,7 @@
     .rez-btn {
         width: 110px;
     }
-}
+}*/
 
 @media (max-width: 424px) {
     .rez-btn {

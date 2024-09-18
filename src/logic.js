@@ -62,7 +62,7 @@ const check = function(){
     currRow.classList.remove('transparent');
 
     let rezRow = document.querySelector(`.flex-row[data-type="row-${gameState.row}"] .rez-row`);
-    rezRow.classList.remove('none');
+    rezRow.style.visibility = 'visible';
 
     for(let fld of rezRow.children){
         if(red > 0){

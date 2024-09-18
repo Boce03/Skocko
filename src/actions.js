@@ -18,8 +18,8 @@ const add = function(e){
     fld.style.backgroundImage = `url(${symbol.images[symbol.symbols.get(key)]})`;
 
     if(gameState.filled.findIndex((a) => a === false) === -1){
-        let rezBtn = document.querySelector(`.flex-row[data-type="row-${gameState.row}"] > .rez-btn`);
-        rezBtn.classList.remove('hidden');
+        let rezBtn = document.querySelector(`.flex-row[data-type="row-${gameState.row}"] .rez-btn`);
+        rezBtn.style.visibility = 'visible';
     }
     
     console.log(gameState);
@@ -32,15 +32,15 @@ const remove = function(e){
     fld.style.backgroundImage = 'none';
 
     if(gameState.filled.findIndex((a) => a === false) !== -1){
-        let rezBtn = document.querySelector(`.flex-row[data-type="row-${gameState.row}"] > .rez-btn`);
-        rezBtn.classList.add('hidden');
+        let rezBtn = document.querySelector(`.flex-row[data-type="row-${gameState.row}"] .rez-btn`);
+        rezBtn.style.visibility = 'hidden';
     }
 
     console.log(gameState);
 }
 
 const submit = function(e){
-    e.target.classList.add('none');
+    e.target.style.visibility = 'hidden';
 
     if(logic.check()){
         gameState.gameOver();
